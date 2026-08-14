@@ -721,7 +721,7 @@ body.light-mode {
             var(--primary-purple),
             var(--secondary-purple));
 
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
 }
 
