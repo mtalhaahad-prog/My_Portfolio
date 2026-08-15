@@ -132,3 +132,38 @@ document.addEventListener("keydown", function (event) {
         document.body.style.overflow = "";
     }
 });
+
+
+// =========================================
+// ALL PROJECTS MODAL
+// =========================================
+
+const projectsModal = document.getElementById("projectsModal");
+const openProjectsModal = document.getElementById("openProjectsModal");
+const closeProjectsModal = document.getElementById("closeProjectsModal");
+
+openProjectsModal.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    projectsModal.classList.add("show");
+    document.body.style.overflow = "hidden";
+});
+
+closeProjectsModal.addEventListener("click", function () {
+    projectsModal.classList.remove("show");
+    document.body.style.overflow = "";
+});
+
+projectsModal.addEventListener("click", function (event) {
+    if (event.target === projectsModal) {
+        projectsModal.classList.remove("show");
+        document.body.style.overflow = "";
+    }
+});
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        projectsModal.classList.remove("show");
+        document.body.style.overflow = "";
+    }
+});
