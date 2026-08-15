@@ -71,3 +71,59 @@ moon.addEventListener("click", () => {
     sun.style.display = "block";
 
 });
+
+
+
+// =========================================
+// ABOUT MODAL
+// =========================================
+
+const aboutModal = document.getElementById("aboutModal");
+const openAboutModal = document.getElementById("openAboutModal");
+const closeAboutModal = document.getElementById("closeAboutModal");
+
+
+// Open Modal
+
+openAboutModal.addEventListener("click", function () {
+    aboutModal.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+});
+
+
+// Close Modal
+
+closeAboutModal.addEventListener("click", function () {
+    aboutModal.classList.remove("show");
+
+    document.body.style.overflow = "";
+});
+
+
+// Close when clicking outside
+
+aboutModal.addEventListener("click", function (event) {
+
+    if (event.target === aboutModal) {
+
+        aboutModal.classList.remove("show");
+
+        document.body.style.overflow = "";
+    }
+
+});
+
+
+// Close with ESC key
+
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+        aboutModal.classList.remove("show");
+
+        document.body.style.overflow = "";
+    }
+
+});
