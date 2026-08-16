@@ -3648,12 +3648,16 @@ body.light-mode .skills-modal-close {
 }
 
 
-/* Main Layout */
+/* =========================================
+   MAIN LAYOUT
+========================================= */
 
 .certificate-container {
     display: flex;
-    align-items: flex-start;
-    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 45px;
+    width: 100%;
 }
 
 
@@ -3671,6 +3675,7 @@ body.light-mode .skills-modal-close {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
@@ -3678,7 +3683,7 @@ body.light-mode .skills-modal-close {
 .heading-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 
@@ -3689,16 +3694,8 @@ body.light-mode .skills-modal-close {
 
 
 .heading-right h2 {
-    font-size: 20px;
     margin: 0;
-}
-
-
-/* View All Button */
-
-.heading-left {
-    display: flex;
-    align-items: center;
+    font-size: 20px;
 }
 
 
@@ -3708,29 +3705,52 @@ body.light-mode .skills-modal-close {
 
 .certificate-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 15px;
     width: 100%;
 }
 
 
 .main-certificate-card {
-    height: 150px;
+    width: 100%;
     min-width: 0;
+    height: 180px;
+    box-sizing: border-box;
 }
 
 
 .main-certificate-card h3 {
+    margin-bottom: 10px;
     font-weight: 300;
     font-size: 16px;
-    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
 
 .main-certificate-card p {
+    margin-bottom: 10px;
     color: var(--text-gray);
     font-size: 12px;
-    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   CERTIFICATE IMAGE
+========================================= */
+
+.certificate-img {
+    flex: 0 0 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.certificate-img img {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
 }
 
 
@@ -3740,6 +3760,7 @@ body.light-mode .skills-modal-close {
 
 .github-statistics {
     flex: 0 0 400px;
+    min-width: 0;
 }
 
 
@@ -3751,28 +3772,31 @@ body.light-mode .skills-modal-close {
 .github-head > div {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 
 .github-head i {
-    font-size: 21px;
     color: var(--primary-purple);
+    font-size: 21px;
 }
 
 
 .github-head h2 {
     margin: 0;
-    font-size: 20px;
     color: var(--text-white);
+    font-size: 20px;
 }
 
 
-/* GitHub Chart */
+/* =========================================
+   GITHUB CHART
+========================================= */
 
 .github-chart {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
+    box-sizing: border-box;
 
     background: var(--bg-card);
 
@@ -3796,9 +3820,9 @@ body.light-mode .skills-modal-close {
 
 
 .github-chart img {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
 }
 
 
@@ -3875,113 +3899,325 @@ body.light-mode .skills-modal-close {
 
 
 /* =========================================
-   TABLET
+   LARGE TABLET
 ========================================= */
 
 @media (max-width: 1100px) {
 
-    .certificate-container {
-        gap: 25px;
+    .certificates {
+        padding: 20px 40px;
     }
 
-    .github-statistics {
-        flex: 0 0 330px;
+    .certificate-container {
+        gap: 30px;
+    }
+
+    .certificate-img {
+        flex: 0 0 250px;
+    }
+
+    .certificate-img img {
+        max-width: 250px;
     }
 
     .certificate-cards {
-        display: grid;
-
-        /* 2 cards per row */
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        /* Center the complete grid */
-        justify-content: center;
-
-        /* Don't allow it to become too wide */
-        width: 100%;
-        max-width: 730px;
-
-        /* Center horizontally */
-        margin: 0 auto;
-
-        gap: 20px;
     }
 
     .main-certificate-card {
         height: auto;
         min-height: 150px;
-
-        /* Allow cards to shrink */
-        min-width: 0;
-        width: 100%;
-        box-sizing: border-box;
     }
+
 }
 
 
-@media (max-width: 1100px) {
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .certificates {
+        padding: 20px 30px;
+    }
+
+    .certificate-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+    }
+
+
+    /* Certificate section */
+
+    .certificate-section {
+        width: 100%;
+        max-width: 750px;
+    }
+
 
     .certificate-cards {
-        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        width: 100%;
-        max-width: 730px;
-
-        margin-left: auto;
-        margin-right: auto;
-
-        justify-content: center;
-        justify-items: stretch;
-
-        gap: 20px;
     }
 
-    .main-certificate-card {
+
+    /* Illustration */
+
+    .certificate-img {
         width: 100%;
-        min-width: 0;
-        box-sizing: border-box;
+        flex: none;
     }
+
+    .certificate-img img {
+        width: 250px;
+        max-width: 60%;
+    }
+
+
+    /* GitHub */
+
+    .github-statistics {
+        width: 100%;
+        max-width: 750px;
+        flex: none;
+    }
+
 }
 
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 768px) {
 
+    .certificates {
+        padding: 20px 25px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+
+    .certificate-container {
+        gap: 30px;
+    }
+
+
+    /* Header */
+
+    .certificate-head {
+        align-items: center;
+        gap: 15px;
+    }
+
+
+    .heading-right {
+        gap: 9px;
+    }
+
+
+    .heading-right i {
+        font-size: 18px;
+    }
+
+
+    .heading-right h2 {
+        font-size: 18px;
+    }
+
+
+    /* Cards */
+
     .certificate-cards {
-        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        width: 100%;
-        max-width: 700px;
-
-        margin-left: auto;
-        margin-right: auto;
-
-        justify-content: center;
-
-        gap: 18px;
+        gap: 15px;
     }
-}
 
-
-@media (max-width: 500px) {
-
-    .certificate-cards {
-        grid-template-columns: minmax(0, 350px);
-
-        width: 100%;
-        max-width: 350px;
-
-        margin-left: auto;
-        margin-right: auto;
-
-        justify-content: center;
-    }
 
     .main-certificate-card {
         width: 100%;
+        min-height: 145px;
+        height: auto;
     }
+
+
+    .main-certificate-card h3 {
+        font-size: 14px;
+    }
+
+
+    .main-certificate-card p {
+        font-size: 11px;
+    }
+
+
+    .certificate-btn {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+
+
+    /* Illustration */
+
+    .certificate-img img {
+        width: 230px;
+        max-width: 70%;
+    }
+
+
+    /* GitHub */
+
+    .github-statistics {
+        width: 100%;
+    }
+
+
+    .github-head h2 {
+        font-size: 18px;
+    }
+
+
+    .github-head i {
+        font-size: 19px;
+    }
+
+
+    .github-chart {
+        padding: 10px;
+        overflow-x: auto;
+    }
+
+
+    .github-chart img {
+        min-width: 500px;
+    }
+
 }
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+
+    .certificates {
+        padding: 20px;
+    }
+
+
+    .certificate-head {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+
+    .heading-right h2 {
+        font-size: 17px;
+    }
+
+
+    .heading-right i {
+        font-size: 17px;
+    }
+
+
+    .heading-left .certificate-btn {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+
+    /* One card per row */
+
+    .certificate-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+
+    .main-certificate-card {
+        min-height: 140px;
+    }
+
+
+    .main-certificate-card h3 {
+        font-size: 15px;
+    }
+
+
+    .main-certificate-card p {
+        font-size: 11px;
+    }
+
+
+    /* Illustration */
+
+    .certificate-img img {
+        width: 200px;
+        max-width: 80%;
+    }
+
+
+    /* GitHub */
+
+    .github-chart {
+        padding: 8px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .certificates {
+        padding: 15px;
+    }
+
+
+    .certificate-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .heading-left {
+        width: 100%;
+    }
+
+
+    .heading-left .certificate-btn {
+        font-size: 10px;
+        padding: 7px 9px;
+    }
+
+
+    .certificate-cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    .main-certificate-card {
+        min-height: 135px;
+    }
+
+
+    .certificate-img img {
+        width: 180px;
+    }
+
+
+    .github-head h2 {
+        font-size: 16px;
+    }
+
+}
+
 
 /* =========================================
    CERTIFICATES MODAL
