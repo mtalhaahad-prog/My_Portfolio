@@ -5232,3 +5232,425 @@ body.light-mode .skills-modal-close {
     }
 
 }
+
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+
+.contact {
+  padding: 15px 70px;
+  margin-top: 50px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--bg-card);
+}
+
+
+.contact-container {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+  line-height: 1.4;
+}
+
+
+.contact-content h1{
+  color: var(--primary-purple);
+  margin-bottom: 10px;
+}
+
+.contact-content p{
+  color: var(--text-gray);
+  font-size: 12px;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-info i {
+  font-size: 14px;
+  color: var(--primary-purple);
+}
+
+.input-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-message input {
+  width: 200px;
+  height: 40px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  background-color: var(--bg-subcard);
+  color: var(--text-gray);
+  margin-bottom: 10px;
+}
+
+.subject {
+  width: 410px;
+  height: 40px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  background-color: var(--bg-subcard);
+  color: var(--text-gray);
+  margin-bottom: 10px;
+}
+
+.message {
+  width: 410px;
+  height: 100px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  background-color: var(--bg-subcard);
+  color: var(--text-gray);
+  margin-bottom: 10px;
+}
+
+.contact-img img{
+  width: 300px;
+}
+
+/* =========================================
+   Footer
+========================================= */
+
+.footer {
+  padding: 20px 70px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.footer-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-para p{
+  color: var(--text-gray);
+  font-size: 14px;
+}
+
+.footer-policy {
+  display: flex;
+  align-items: center;
+  gap: 20px ;
+}
+
+.footer-policy {
+  color: var(--primary-purple);
+  font-size: 16px;
+
+}
+
+
+/* =========================================
+   CONTACT RESPONSIVE
+========================================= */
+
+/* TABLET */
+@media (max-width: 1100px) {
+
+    .contact {
+        padding: 20px 40px;
+        margin-top: 40px;
+    }
+
+    .contact-container {
+        gap: 30px;
+    }
+
+    .contact-content {
+        flex: 1;
+    }
+
+    .contact-form {
+        flex: 1;
+    }
+
+    .contact-img img {
+        width: 240px;
+    }
+
+    .input-message input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .subject,
+    .message {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+
+/* =========================================
+   TABLET / SMALL LAPTOP
+========================================= */
+
+@media (max-width: 900px) {
+
+    .contact {
+        padding: 20px 30px;
+    }
+
+    .contact-container {
+        gap: 25px;
+    }
+
+    .contact-img img {
+        width: 200px;
+    }
+
+    .input-message {
+        width: 100%;
+    }
+
+    .input-message input {
+        width: 50%;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .contact {
+        padding: 30px;
+        margin-top: 30px;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* Contact information */
+    .contact-content {
+        width: 100%;
+    }
+
+    .contact-content h1 {
+        font-size: 24px;
+    }
+
+    .contact-content p {
+        font-size: 12px;
+    }
+
+    .contact-info {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    /* Contact form */
+    .contact-form {
+        width: 100%;
+    }
+
+    .input-message {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .input-message input {
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+    .subject,
+    .message {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .message {
+        height: 120px;
+    }
+
+    /* Illustration */
+    .contact-img {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .contact-img img {
+        width: 250px;
+        max-width: 80%;
+    }
+
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    .footer {
+        padding: 20px 30px;
+    }
+
+    .footer-head {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-para p {
+        font-size: 12px;
+    }
+
+    .footer-policy {
+        justify-content: center;
+        gap: 15px;
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .contact {
+        padding: 25px 20px;
+    }
+
+    .contact-container {
+        gap: 25px;
+    }
+
+    .contact-content h1 {
+        font-size: 22px;
+    }
+
+    .contact-content p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .contact-info {
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    .contact-info i {
+        font-size: 13px;
+    }
+
+
+    /* Form */
+    .input-message {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .input-message input {
+        width: 100%;
+        height: 38px;
+    }
+
+    .subject {
+        width: 100%;
+        height: 38px;
+    }
+
+    .message {
+        width: 100%;
+        height: 110px;
+    }
+
+
+    /* Illustration */
+    .contact-img img {
+        width: 220px;
+        max-width: 75%;
+    }
+
+
+    /* Footer */
+    .footer {
+        padding: 20px;
+    }
+
+    .footer-head {
+        gap: 12px;
+    }
+
+    .footer-para p {
+        font-size: 11px;
+    }
+
+    .footer-policy {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .contact {
+        padding: 20px 15px;
+    }
+
+    .contact-content h1 {
+        font-size: 20px;
+    }
+
+    .contact-content p {
+        font-size: 10px;
+    }
+
+    .contact-info {
+        font-size: 10px;
+    }
+
+    .contact-img img {
+        width: 180px;
+    }
+
+    .footer {
+        padding: 18px 15px;
+    }
+
+    .footer-para p {
+        font-size: 10px;
+    }
+
+    .footer-policy {
+        font-size: 11px;
+    }
+
+}
+
+
