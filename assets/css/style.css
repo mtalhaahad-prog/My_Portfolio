@@ -3635,3 +3635,1600 @@ body.light-mode .skills-modal-close {
     font-size: 8px;
   }
 }
+
+/* =========================================
+   CERTIFICATE + GITHUB
+========================================= */
+
+.certificates {
+    padding: 20px 70px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* Main Layout */
+
+.certificate-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+
+/* =========================================
+   LEFT - CERTIFICATES
+========================================= */
+
+.certificate-section {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.certificate-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+.heading-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.heading-right i {
+    color: var(--primary-purple);
+    font-size: 20px;
+}
+
+
+.heading-right h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+
+/* View All Button */
+
+.heading-left {
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================
+   CERTIFICATE CARDS
+========================================= */
+
+.certificate-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+}
+
+
+.main-certificate-card {
+    height: 150px;
+    min-width: 0;
+}
+
+
+.main-certificate-card h3 {
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+
+.main-certificate-card p {
+    color: var(--text-gray);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   RIGHT - GITHUB
+========================================= */
+
+.github-statistics {
+    flex: 0 0 400px;
+}
+
+
+.github-head {
+    margin-bottom: 20px;
+}
+
+
+.github-head > div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.github-head i {
+    font-size: 21px;
+    color: var(--primary-purple);
+}
+
+
+.github-head h2 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--text-white);
+}
+
+
+/* GitHub Chart */
+
+.github-chart {
+    width: 100%;
+    padding: 20px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    transition: all 0.3s ease;
+}
+
+
+.github-chart:hover {
+    border-color: var(--secondary-purple);
+
+    background: rgba(168, 85, 247, 0.08);
+
+    box-shadow:
+        0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+
+.github-chart img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* =========================================
+   CERTIFICATE BUTTON
+========================================= */
+
+.certificate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 12px;
+
+    text-decoration: none;
+
+    color: var(--text-gray);
+
+    background: var(--bg-subcard);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    transition: all 0.3s ease;
+}
+
+
+.certificate-btn i {
+    color: var(--secondary-purple);
+    font-size: 11px;
+
+    transition: transform 0.3s ease;
+}
+
+
+.certificate-btn:hover {
+    color: var(--text-white);
+
+    border-color: var(--secondary-purple);
+
+    background: linear-gradient(
+        to right,
+        rgba(168, 85, 247, 0.12),
+        rgba(139, 92, 246, 0.08)
+    );
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(139, 92, 246, 0.15);
+}
+
+
+.certificate-btn:hover i {
+    color: var(--text-white);
+    transform: translateX(5px);
+}
+
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+.light-mode .certificate-btn:hover {
+    color: #000;
+}
+
+.light-mode .certificate-btn:hover i {
+    color: #000;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .certificate-container {
+        gap: 25px;
+    }
+
+    .github-statistics {
+        flex: 0 0 330px;
+    }
+
+    .certificate-cards {
+        display: grid;
+
+        /* 2 cards per row */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        /* Center the complete grid */
+        justify-content: center;
+
+        /* Don't allow it to become too wide */
+        width: 100%;
+        max-width: 730px;
+
+        /* Center horizontally */
+        margin: 0 auto;
+
+        gap: 20px;
+    }
+
+    .main-certificate-card {
+        height: auto;
+        min-height: 150px;
+
+        /* Allow cards to shrink */
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+
+@media (max-width: 1100px) {
+
+    .certificate-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        width: 100%;
+        max-width: 730px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        justify-content: center;
+        justify-items: stretch;
+
+        gap: 20px;
+    }
+
+    .main-certificate-card {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .certificate-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        width: 100%;
+        max-width: 700px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        justify-content: center;
+
+        gap: 18px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .certificate-cards {
+        grid-template-columns: minmax(0, 350px);
+
+        width: 100%;
+        max-width: 350px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        justify-content: center;
+    }
+
+    .main-certificate-card {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   CERTIFICATES MODAL
+========================================= */
+
+.certificate-modal {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.3s ease;
+
+    z-index: 9999;
+}
+
+
+/* Modal Open */
+
+.certificate-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================
+   MODAL CONTENT
+========================================= */
+
+.certificate-modal-content {
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+
+    padding: 25px;
+
+    overflow-y: auto;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(139, 92, 246, 0.12);
+
+    transform: translateY(30px) scale(0.97);
+
+    transition: all 0.3s ease;
+}
+
+
+/* Animation */
+
+.certificate-modal.active .certificate-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================
+   MODAL HEADER
+========================================= */
+
+.certificate-modal-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+.certificate-modal-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.certificate-modal-title i {
+    font-size: 20px;
+
+    color: var(--primary-purple);
+}
+
+
+.certificate-modal-title h2 {
+    margin: 0;
+
+    font-size: 20px;
+
+    color: var(--text-white);
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.certificate-close {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 7px;
+
+    background: var(--bg-subcard);
+
+    color: var(--text-gray);
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+
+.certificate-close:hover {
+    color: var(--text-white);
+
+    border-color: var(--secondary-purple);
+
+    background: rgba(168, 85, 247, 0.12);
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   CERTIFICATE GRID
+========================================= */
+
+.certificate-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   CERTIFICATE CARD
+========================================= */
+
+.certificate-modal-card {
+    display: flex;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    background: var(--bg-subcard);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 10px;
+
+    transition: all 0.3s ease;
+}
+
+
+.certificate-modal-card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--secondary-purple);
+
+    background: rgba(168, 85, 247, 0.08);
+
+    box-shadow:
+        0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+
+/* =========================================
+   CERTIFICATE ICON
+========================================= */
+
+.certificate-icon {
+    min-width: 45px;
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(139, 92, 246, 0.12);
+
+    color: var(--secondary-purple);
+
+    font-size: 20px;
+
+    transition: all 0.3s ease;
+}
+
+
+.certificate-modal-card:hover .certificate-icon {
+    background: var(--primary-purple);
+
+    color: var(--text-white);
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   CERTIFICATE INFO
+========================================= */
+
+.certificate-info {
+    min-width: 0;
+}
+
+
+.certificate-info h3 {
+    margin: 0 0 6px;
+
+    font-size: 14px;
+
+    color: var(--text-white);
+}
+
+
+.certificate-info p {
+    margin: 0 0 8px;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    color: var(--text-gray);
+}
+
+
+.certificate-info span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 9px;
+
+    color: var(--secondary-purple);
+}
+
+
+.certificate-info a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 10px;
+
+    color: var(--secondary-purple);
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+
+.certificate-info a:hover {
+    color: var(--text-white);
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.certificate-modal-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.certificate-modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.certificate-modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-purple);
+
+    border-radius: 10px;
+}
+
+.certificate-view-btn {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .certificate-modal {
+        padding: 15px;
+    }
+
+    .certificate-modal-content {
+        width: 100%;
+
+        padding: 18px;
+
+        max-height: 90vh;
+    }
+
+    .certificate-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate-modal-title h2 {
+        font-size: 17px;
+    }
+
+    .certificate-modal-card {
+        padding: 15px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .certificate-modal-content {
+        padding: 15px;
+    }
+
+    .certificate-modal-title h2 {
+        font-size: 15px;
+    }
+
+    .certificate-modal-card {
+        gap: 10px;
+    }
+
+    .certificate-icon {
+        min-width: 38px;
+        width: 38px;
+        height: 38px;
+
+        font-size: 17px;
+    }
+}
+
+
+
+/* =========================================
+   GITHUB STATISTICS
+========================================= */
+
+.github-section {
+    padding: 20px 70px 40px;
+    margin-top: 10px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.github-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.github-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+
+.github-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.github-title i {
+    font-size: 21px;
+    color: var(--primary-purple);
+}
+
+
+.github-title h2 {
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: var(--text-white);
+}
+
+
+/* =========================================
+   VIEW PROFILE BUTTON
+========================================= */
+
+.github-profile-btn {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    text-decoration: none;
+
+    color: var(--secondary-purple);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    border: 1px solid transparent;
+
+    border-radius: 6px;
+
+    transition: all 0.3s ease;
+}
+
+
+.github-profile-btn i {
+    font-size: 10px;
+
+    transition: transform 0.3s ease;
+}
+
+
+.github-profile-btn:hover {
+    color: var(--text-white);
+
+    border-color: var(--secondary-purple);
+
+    background: rgba(139, 92, 246, 0.10);
+
+    transform: translateY(-2px);
+}
+
+
+.github-profile-btn:hover i {
+    transform: translate(2px, -2px);
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.github-card {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 360px;
+
+    padding: 30px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.github-loading {
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    color: var(--text-gray);
+
+    text-align: center;
+}
+
+
+.github-loading p {
+    margin: 0;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   SPINNER
+========================================= */
+
+.github-spinner {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(139, 92, 246, 0.18);
+
+    border-top-color: var(--primary-purple);
+
+    animation:
+        githubSpin 0.8s linear infinite;
+}
+
+
+@keyframes githubSpin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.github-content {
+    display: none;
+
+    grid-template-columns:
+        minmax(280px, 0.85fr)
+        1px
+        minmax(450px, 1.6fr);
+
+    column-gap: 30px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================
+   LEFT PROFILE
+========================================= */
+
+.github-profile {
+    min-width: 0;
+}
+
+
+/* =========================================
+   USER
+========================================= */
+
+.github-user {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.github-user img {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--primary-purple);
+
+    box-shadow:
+        0 0 0 4px rgba(139, 92, 246, 0.12),
+        0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+
+.github-user-info {
+    min-width: 0;
+}
+
+
+.github-user-info h3 {
+    margin: 0 0 4px;
+
+    font-size: 16px;
+
+    color: var(--text-white);
+}
+
+
+.github-user-info span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 11px;
+
+    color: var(--secondary-purple);
+}
+
+
+.github-user-info p {
+    margin: 0;
+
+    font-size: 10px;
+
+    color: var(--text-gray);
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.github-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 28px;
+}
+
+
+.github-stat {
+    padding: 12px 8px;
+
+    text-align: center;
+
+    background: var(--bg-subcard);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 8px;
+
+    transition: all 0.3s ease;
+}
+
+
+.github-stat:hover {
+    border-color: var(--secondary-purple);
+
+    transform: translateY(-3px);
+
+    background:
+        rgba(139, 92, 246, 0.08);
+}
+
+
+.github-stat strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 18px;
+
+    color: var(--secondary-purple);
+}
+
+
+.github-stat span {
+    display: block;
+
+    font-size: 8px;
+
+    color: var(--text-gray);
+}
+
+
+/* =========================================
+   LANGUAGES
+========================================= */
+
+.github-languages {
+    width: 100%;
+}
+
+
+.github-subtitle {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 15px;
+}
+
+
+.github-subtitle i {
+    font-size: 15px;
+
+    color: var(--primary-purple);
+}
+
+
+.github-subtitle span {
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: var(--text-white);
+}
+
+
+/* =========================================
+   LANGUAGE BARS
+========================================= */
+
+.language-bars {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.language-item {
+    width: 100%;
+}
+
+
+.language-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 5px;
+}
+
+
+.language-name {
+    font-size: 9px;
+
+    color: var(--text-gray);
+}
+
+
+.language-percent {
+    font-size: 9px;
+
+    color: var(--secondary-purple);
+}
+
+
+.language-track {
+    width: 100%;
+
+    height: 5px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border-radius: 10px;
+}
+
+
+.language-fill {
+    height: 100%;
+
+    width: 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary-purple),
+            var(--secondary-purple)
+        );
+
+    transition:
+        width 1s ease;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.github-content::after {
+    content: "";
+
+    display: block;
+
+    grid-column: 2;
+
+    grid-row: 1;
+
+    width: 1px;
+
+    height: 100%;
+
+    background: var(--border-color);
+
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   CONTRIBUTIONS
+========================================= */
+
+.github-contributions {
+    min-width: 0;
+
+    grid-column: 3;
+}
+
+
+/* =========================================
+   CONTRIBUTION HEADER
+========================================= */
+
+.contribution-head {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+
+.contribution-head h3 {
+    margin: 0 0 5px;
+
+    font-size: 15px;
+
+    color: var(--text-white);
+}
+
+
+.contribution-head p {
+    margin: 0;
+
+    font-size: 10px;
+
+    color: var(--text-gray);
+}
+
+
+.contribution-head > i {
+    font-size: 18px;
+
+    color: var(--primary-purple);
+}
+
+
+/* =========================================
+   CONTRIBUTION WRAPPER
+========================================= */
+
+.contribution-wrapper {
+    width: 100%;
+
+    overflow: hidden;
+
+    padding: 15px;
+
+    background: var(--bg-subcard);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   MONTHS
+========================================= */
+
+.months {
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, 1fr);
+
+    gap: 5px;
+
+    margin-bottom: 10px;
+
+    color: var(--text-gray);
+
+    font-size: 8px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   GRAPH
+========================================= */
+
+.contribution-graph {
+    width: 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        var(--primary-purple)
+        transparent;
+}
+
+
+.github-chart {
+    width: max-content;
+
+    min-width: 100%;
+}
+
+
+.github-chart img {
+    display: block;
+
+    width: 100%;
+
+    min-width: 600px;
+
+    height: auto;
+
+    border-radius: 3px;
+}
+
+
+/* =========================================
+   LEGEND
+========================================= */
+
+.github-legend {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    margin-top: 12px;
+
+    font-size: 9px;
+
+    color: var(--text-gray);
+}
+
+
+.github-legend .level {
+    width: 12px;
+    height: 12px;
+
+    display: block;
+
+    border-radius: 3px;
+}
+
+
+.level-1 {
+    background: #241a3d;
+}
+
+
+.level-2 {
+    background: #4c2a80;
+}
+
+
+.level-3 {
+    background: #7c3aed;
+}
+
+
+.level-4 {
+    background: #a855f7;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.github-error {
+    min-height: 300px;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    text-align: center;
+}
+
+
+.github-error > i {
+    font-size: 25px;
+
+    color: var(--secondary-purple);
+}
+
+
+.github-error p {
+    margin: 0;
+
+    font-size: 12px;
+
+    color: var(--text-gray);
+}
+
+
+.github-error button {
+    padding: 8px 15px;
+
+    border: 1px solid var(--secondary-purple);
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: var(--secondary-purple);
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+
+.github-error button:hover {
+    color: var(--text-white);
+
+    background: var(--primary-purple);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   MOBILE / TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .github-section {
+        padding: 20px 40px 35px;
+    }
+
+
+    .github-content {
+        grid-template-columns: 1fr;
+
+        row-gap: 30px;
+    }
+
+
+    .github-content::after {
+        display: none;
+    }
+
+
+    .github-contributions {
+        grid-column: auto;
+
+        padding-top: 25px;
+
+        border-top: 1px solid var(--border-color);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .github-section {
+        padding: 20px;
+    }
+
+
+    .github-card {
+        padding: 20px;
+    }
+
+
+    .github-head {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .github-title h2 {
+        font-size: 17px;
+    }
+
+
+    .github-profile-btn {
+        font-size: 9px;
+    }
+
+
+    .github-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .github-user img {
+        width: 55px;
+        height: 55px;
+    }
+
+
+    .github-user-info h3 {
+        font-size: 14px;
+    }
+
+
+    .github-chart img {
+        min-width: 700px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .github-section {
+        padding: 15px;
+    }
+
+
+    .github-card {
+        padding: 15px;
+    }
+
+
+    .github-head {
+        flex-direction: column;
+    }
+
+
+    .github-profile-btn {
+        align-self: flex-start;
+    }
+
+
+    .github-user {
+        align-items: flex-start;
+    }
+
+
+    .github-stats {
+        gap: 8px;
+    }
+
+
+    .github-stat strong {
+        font-size: 16px;
+    }
+
+
+    .github-subtitle span {
+        font-size: 12px;
+    }
+
+}

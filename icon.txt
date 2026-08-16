@@ -25,3 +25,239 @@
 <i class="fa-solid fa-code-branch"></i> Version Control
 <i class="fa-solid fa-plug"></i> API Integration
 <i class="fa-solid fa-file-code"></i> JSON / XML
+
+
+
+
+
+
+
+
+
+<!-- =========================================
+     GITHUB STATISTICS
+========================================= -->
+
+                <section class="github-section" id="github">
+
+                    <div class="github-container">
+
+                        <!-- HEADER -->
+                        <div class="github-head">
+
+                            <div class="github-title">
+                                <i class="fa-brands fa-github"></i>
+                                <h2>GitHub Statistics</h2>
+                            </div>
+
+                            <a href="https://github.com/talhaahad" target="_blank" rel="noopener noreferrer"
+                                class="github-profile-btn">
+                                View Profile
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+
+                        </div>
+
+
+                        <!-- MAIN GITHUB CARD -->
+                        <div class="github-card" id="githubCard">
+
+                            <!-- LOADING -->
+                            <div class="github-loading" id="githubLoading">
+
+                                <div class="github-spinner"></div>
+
+                                <p>Loading GitHub statistics...</p>
+
+                            </div>
+
+
+                            <!-- CONTENT -->
+                            <div class="github-content" id="githubContent">
+
+                                <!-- LEFT SIDE -->
+                                <div class="github-profile">
+
+                                    <div class="github-user">
+
+                                        <img id="githubAvatar" src="" alt="GitHub Profile">
+
+                                        <div class="github-user-info">
+
+                                            <h3 id="githubName">
+                                                Muhammad Talha Ahad
+                                            </h3>
+
+                                            <span id="githubUsername">
+                                                @talhaahad
+                                            </span>
+
+                                            <p id="githubBio">
+                                                Developer
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- STATISTICS -->
+                                    <div class="github-stats">
+
+                                        <div class="github-stat">
+
+                                            <strong id="repoCount">
+                                                0
+                                            </strong>
+
+                                            <span>Repositories</span>
+
+                                        </div>
+
+
+                                        <div class="github-stat">
+
+                                            <strong id="starCount">
+                                                0
+                                            </strong>
+
+                                            <span>Stars</span>
+
+                                        </div>
+
+
+                                        <div class="github-stat">
+
+                                            <strong id="followerCount">
+                                                0
+                                            </strong>
+
+                                            <span>Followers</span>
+
+                                        </div>
+
+
+                                        <div class="github-stat">
+
+                                            <strong id="followingCount">
+                                                0
+                                            </strong>
+
+                                            <span>Following</span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- LANGUAGES -->
+                                    <div class="github-languages">
+
+                                        <div class="github-subtitle">
+
+                                            <span>Most Used Languages</span>
+
+                                        </div>
+
+                                        <div class="language-bars" id="languageBars"></div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- RIGHT SIDE -->
+                                <div class="github-contributions">
+
+                                    <div class="contribution-head">
+
+                                        <div>
+
+                                            <h3>Contribution Activity</h3>
+
+                                            <p>
+                                                GitHub contribution overview
+                                            </p>
+
+                                        </div>
+
+                                        <i class="fa-solid fa-code-branch"></i>
+
+                                    </div>
+
+
+                                    <!-- CONTRIBUTION GRAPH -->
+
+                                    <div class="contribution-wrapper">
+
+                                        <div class="months">
+
+                                            <span>Jan</span>
+                                            <span>Feb</span>
+                                            <span>Mar</span>
+                                            <span>Apr</span>
+                                            <span>May</span>
+                                            <span>Jun</span>
+                                            <span>Jul</span>
+                                            <span>Aug</span>
+                                            <span>Sep</span>
+                                            <span>Oct</span>
+                                            <span>Nov</span>
+                                            <span>Dec</span>
+
+                                        </div>
+
+
+                                        <div class="contribution-graph">
+
+                                            <div class="github-chart">
+                                                <img id="githubContributions"
+                                                    src="https://ghchart.rshah.org/8b5cf6/mtalhaahad-prog"
+                                                    alt="GitHub Contribution Graph">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- CONTRIBUTION LEGEND -->
+
+                                    <div class="github-legend">
+
+                                        <span>Less</span>
+
+                                        <i class="level level-1"></i>
+                                        <i class="level level-2"></i>
+                                        <i class="level level-3"></i>
+                                        <i class="level level-4"></i>
+
+                                        <span>More</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ERROR -->
+                            <div class="github-error" id="githubError">
+
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                                <p>
+                                    Unable to load GitHub statistics.
+                                </p>
+
+                                <button type="button" onclick="loadGitHubStats(true)">
+                                    Try Again
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
