@@ -5742,191 +5742,591 @@ body.light-mode .skills-modal-close {
    CONTACT
 ========================================= */
 
-
 .contact {
-  padding: 15px 70px;
-  margin-top: 50px;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  background-color: var(--bg-card);
+    padding: 60px 70px 25px;
+    margin-top: 50px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    background-color: var(--bg-card);
 }
 
+
+/* =========================================
+   CONTACT CONTAINER
+========================================= */
 
 .contact-container {
-  display: flex;
-  gap: 40px;
-  align-items: stretch;
-  line-height: 1.4;
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    /*
+       Left Content | Form | Image
+    */
+    grid-template-columns: 280px minmax(400px, 1fr) 300px;
+
+    align-items: center;
+
+    column-gap: 45px;
+
+    line-height: 1.4;
 }
 
 
-.contact-content h1{
-  color: var(--primary-purple);
-  margin-bottom: 10px;
+/* =========================================
+   CONTACT CONTENT
+========================================= */
+
+.contact-content {
+    width: 100%;
+    min-width: 0;
 }
 
-.contact-content p{
-  color: var(--text-gray);
-  font-size: 12px;
+
+.contact-content h1 {
+    margin: 0 0 15px;
+
+    color: var(--primary-purple);
+
+    font-size: 30px;
+
+    line-height: 1.25;
 }
+
+
+.contact-content > p {
+    margin: 0 0 5px;
+
+    color: var(--text-gray);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   CONTACT INFO
+========================================= */
 
 .contact-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 17px;
+
+    margin-bottom: 0;
 }
+
 
 .contact-info i {
-  font-size: 14px;
-  color: var(--primary-purple);
+    flex: 0 0 18px;
+
+    color: var(--primary-purple);
+
+    font-size: 15px;
+
+    text-align: center;
 }
+
+
+.contact-info p {
+    margin: 0;
+
+    color: var(--text-gray);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+
+.contact-input {
+    width: 100%;
+    min-width: 0;
+}
+
+
+#contact-form {
+    width: 100%;
+}
+
+
+/* =========================================
+   NAME + EMAIL
+========================================= */
 
 .input-message {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    width: 100%;
 }
+
+
+.input-message input,
+.subject,
+.message {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    outline: none;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 8px;
+
+    background-color: var(--bg-subcard);
+
+    color: var(--text-white);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
 
 .input-message input {
-  width: 200px;
-  height: 40px;
-  border-radius: 7px;
-  outline: none;
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  background-color: var(--bg-subcard);
-  color: var(--text-gray);
-  margin-bottom: 10px;
+    height: 45px;
+
+    padding: 0 14px;
+
+    margin-bottom: 12px;
 }
+
 
 .subject {
-  width: 410px;
-  height: 40px;
-  border-radius: 7px;
-  outline: none;
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  background-color: var(--bg-subcard);
-  color: var(--text-gray);
-  margin-bottom: 10px;
+    height: 45px;
+
+    padding: 0 14px;
+
+    margin-bottom: 12px;
 }
+
 
 .message {
-  width: 410px;
-  height: 100px;
-  border-radius: 7px;
-  outline: none;
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  background-color: var(--bg-subcard);
-  color: var(--text-gray);
-  margin-bottom: 10px;
-}
+    min-height: 130px;
 
-.contact-img img{
-  width: 300px;
-}
+    padding: 13px 14px;
 
-/* =========================================
-   Footer
-========================================= */
+    resize: vertical;
 
-.footer {
-  padding: 20px 70px;
-  font-family: "Plus Jakarta Sans", sans-serif;
-}
+    margin-bottom: 10px;
 
-.footer-head{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer-para p{
-  color: var(--text-gray);
-  font-size: 14px;
-}
-
-.footer-policy {
-  display: flex;
-  align-items: center;
-  gap: 20px ;
-}
-
-.footer-policy {
-  color: var(--primary-purple);
-  font-size: 16px;
-
+    line-height: 1.5;
 }
 
 
 /* =========================================
-   CONTACT RESPONSIVE
+   PLACEHOLDER
 ========================================= */
 
-/* TABLET */
-@media (max-width: 1100px) {
+.input-message input::placeholder,
+.subject::placeholder,
+.message::placeholder {
+    color: var(--text-gray);
+
+    opacity: 0.75;
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.input-message input:focus,
+.subject:focus,
+.message:focus {
+    border-color: var(--secondary-purple);
+
+    background-color: var(--bg-subcard);
+
+    box-shadow:
+        0 0 0 3px rgba(139, 92, 246, 0.08);
+}
+
+
+/* =========================================
+   SEND BUTTON
+========================================= */
+
+.contact-input .hero-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.contact-input .hero-btn.loading {
+    opacity: 0.7;
+
+    pointer-events: none;
+}
+
+
+.contact-input .hero-btn.loading i {
+    animation: sendLoading 1s linear infinite;
+}
+
+
+@keyframes sendLoading {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   FORM STATUS
+========================================= */
+
+.form-status {
+    min-height: 18px;
+
+    margin: 10px 0 0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    transition: all 0.3s ease;
+}
+
+
+.form-status.success {
+    color: #22c55e;
+}
+
+
+.form-status.error {
+    color: #ef4444;
+}
+
+
+/* =========================================
+   CONTACT IMAGE
+========================================= */
+
+.contact-img {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.contact-img img {
+    display: block;
+
+    width: 300px;
+
+    max-width: 100%;
+
+    height: auto;
+}
+
+
+/* =========================================
+   FOLLOW LINKS
+========================================= */
+
+.follow-links {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 45px auto 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border-color);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.follow-links h5 {
+    margin: 0;
+
+    color: var(--text-white);
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+
+.follow-links-icons {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.follow-links-icons a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 12px;
+
+    color: var(--text-gray);
+
+    background: var(--bg-subcard);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    transition: all 0.3s ease;
+}
+
+
+.follow-links-icons a i {
+    color: var(--secondary-purple);
+
+    font-size: 13px;
+
+    transition: transform 0.3s ease;
+}
+
+
+.follow-links-icons a:hover {
+    color: var(--text-white);
+
+    border-color: var(--secondary-purple);
+
+    background: rgba(168, 85, 247, 0.08);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(139, 92, 246, 0.12);
+}
+
+
+.follow-links-icons a:hover i {
+    color: var(--text-white);
+
+    transform: scale(1.1);
+}
+
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+.light-mode .follow-links-icons a:hover {
+    color: #000;
+}
+
+.light-mode .follow-links-icons a:hover i {
+    color: #000;
+}
+
+
+/* =========================================
+   LARGE TABLET
+========================================= */
+
+@media (max-width: 1200px) {
 
     .contact {
-        padding: 20px 40px;
-        margin-top: 40px;
+        padding: 50px 50px 25px;
     }
 
     .contact-container {
+        grid-template-columns: 240px minmax(350px, 1fr) 250px;
+
+        column-gap: 30px;
+    }
+
+    .contact-content h1 {
+        font-size: 27px;
+    }
+
+    .contact-img img {
+        width: 250px;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .contact {
+        padding: 45px 40px 25px;
+    }
+
+    .contact-container {
+        grid-template-columns: 230px minmax(0, 1fr);
+
+        column-gap: 30px;
+
+        row-gap: 35px;
+    }
+
+
+    /* Form */
+
+    .contact-input {
+        width: 100%;
+    }
+
+
+    /* Image */
+
+    .contact-img {
+        grid-column: 1 / -1;
+
+        justify-content: center;
+    }
+
+    .contact-img img {
+        width: 260px;
+    }
+
+
+    .follow-links {
+        margin-top: 35px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+    .contact {
+        padding: 40px 30px 25px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+
         gap: 30px;
     }
 
+
+    /* Contact text */
+
     .contact-content {
-        flex: 1;
+        width: 100%;
+
+        text-align: center;
     }
 
-    .contact-form {
-        flex: 1;
+
+    .contact-content h1 {
+        font-size: 26px;
+    }
+
+
+    .contact-content > p {
+        font-size: 13px;
+    }
+
+
+    .contact-info {
+        justify-content: center;
+    }
+
+
+    /* Form */
+
+    .contact-input {
+        width: 100%;
+
+        max-width: 600px;
+
+        margin: 0 auto;
+    }
+
+
+    /* Image */
+
+    .contact-img {
+        grid-column: auto;
     }
 
     .contact-img img {
         width: 240px;
     }
 
-    .input-message input {
-        width: 100%;
-        min-width: 0;
-    }
 
-    .subject,
-    .message {
-        width: 100%;
-        box-sizing: border-box;
-    }
+    /* Follow */
 
-}
+    .follow-links {
+        flex-direction: column;
 
+        align-items: center;
 
-/* =========================================
-   TABLET / SMALL LAPTOP
-========================================= */
+        gap: 15px;
 
-@media (max-width: 900px) {
-
-    .contact {
-        padding: 20px 30px;
-    }
-
-    .contact-container {
-        gap: 25px;
-    }
-
-    .contact-img img {
-        width: 200px;
-    }
-
-    .input-message {
-        width: 100%;
-    }
-
-    .input-message input {
-        width: 50%;
+        text-align: center;
     }
 
 }
@@ -5936,87 +6336,235 @@ body.light-mode .skills-modal-close {
    MOBILE
 ========================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
     .contact {
-        padding: 30px;
-        margin-top: 30px;
+        padding: 35px 20px 20px;
+
+        margin-top: 35px;
     }
 
-    .contact-container {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    /* Contact information */
-    .contact-content {
-        width: 100%;
-    }
 
     .contact-content h1 {
-        font-size: 24px;
+        font-size: 23px;
+
+        line-height: 1.3;
     }
 
-    .contact-content p {
+
+    .contact-content > p {
         font-size: 12px;
     }
 
+
     .contact-info {
-        margin-top: 12px;
-        margin-bottom: 12px;
+        margin-top: 14px;
     }
 
-    /* Contact form */
-    .contact-form {
-        width: 100%;
+
+    .contact-info p {
+        font-size: 12px;
     }
+
+
+    /* Name + Email */
 
     .input-message {
-        display: flex;
-        gap: 10px;
-        width: 100%;
+        grid-template-columns: 1fr;
+
+        gap: 0;
     }
+
 
     .input-message input {
-        width: 50%;
-        box-sizing: border-box;
+        height: 42px;
+
+        margin-bottom: 10px;
     }
 
-    .subject,
+
+    .subject {
+        height: 42px;
+    }
+
+
     .message {
-        width: 100%;
-        box-sizing: border-box;
+        min-height: 120px;
     }
 
-    .message {
-        height: 120px;
-    }
 
-    /* Illustration */
-    .contact-img {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
+    /* Image */
 
     .contact-img img {
-        width: 250px;
-        max-width: 80%;
+        width: 210px;
     }
 
 
-    /* =========================================
-       FOOTER
-    ========================================= */
+    /* Follow */
+
+    .follow-links {
+        margin-top: 30px;
+
+        padding-top: 18px;
+    }
+
+
+    .follow-links-icons {
+        justify-content: center;
+
+        width: 100%;
+    }
+
+
+    .follow-links-icons a {
+        padding: 7px 9px;
+
+        font-size: 10px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .contact {
+        padding: 30px 15px 20px;
+    }
+
+
+    .contact-content h1 {
+        font-size: 21px;
+    }
+
+
+    .contact-content > p {
+        font-size: 11px;
+    }
+
+
+    .contact-info {
+        justify-content: flex-start;
+    }
+
+
+    .contact-img img {
+        width: 190px;
+    }
+
+
+    .follow-links-icons {
+        gap: 7px;
+    }
+
+
+    .follow-links-icons a {
+        padding: 6px 8px;
+
+        font-size: 9px;
+    }
+
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    width: 100%;
+    padding: 20px 70px;
+
+    box-sizing: border-box;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* =========================================
+   FOOTER HEAD
+========================================= */
+
+.footer-head {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   FOOTER COPYRIGHT
+========================================= */
+
+.footer-para {
+    min-width: 0;
+}
+
+
+.footer-para p {
+    margin: 0;
+
+    color: var(--text-gray);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   FOOTER POLICY
+========================================= */
+
+.footer-policy {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+
+.footer-policy a {
+    color: var(--primary-purple);
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+
+.footer-policy a:hover {
+    color: var(--secondary-purple);
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
 
     .footer {
-        padding: 20px 30px;
+        padding: 20px 40px;
     }
 
     .footer-head {
-        flex-direction: column;
         gap: 15px;
-        text-align: center;
     }
 
     .footer-para p {
@@ -6024,9 +6572,54 @@ body.light-mode .skills-modal-close {
     }
 
     .footer-policy {
-        justify-content: center;
         gap: 15px;
-        font-size: 13px;
+    }
+
+    .footer-policy a {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .footer {
+        padding: 20px 30px;
+    }
+
+    .footer-head {
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: center;
+
+        gap: 12px;
+    }
+
+    .footer-para {
+        width: 100%;
+    }
+
+    .footer-para p {
+        font-size: 11px;
+    }
+
+    .footer-policy {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+    .footer-policy a {
+        font-size: 11px;
     }
 
 }
@@ -6038,79 +6631,28 @@ body.light-mode .skills-modal-close {
 
 @media (max-width: 500px) {
 
-    .contact {
-        padding: 25px 20px;
-    }
-
-    .contact-container {
-        gap: 25px;
-    }
-
-    .contact-content h1 {
-        font-size: 22px;
-    }
-
-    .contact-content p {
-        font-size: 11px;
-        line-height: 1.6;
-    }
-
-    .contact-info {
-        gap: 8px;
-        font-size: 11px;
-    }
-
-    .contact-info i {
-        font-size: 13px;
-    }
-
-
-    /* Form */
-    .input-message {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .input-message input {
-        width: 100%;
-        height: 38px;
-    }
-
-    .subject {
-        width: 100%;
-        height: 38px;
-    }
-
-    .message {
-        width: 100%;
-        height: 110px;
-    }
-
-
-    /* Illustration */
-    .contact-img img {
-        width: 220px;
-        max-width: 75%;
-    }
-
-
-    /* Footer */
     .footer {
-        padding: 20px;
+        padding: 18px 20px;
     }
 
     .footer-head {
-        gap: 12px;
+        gap: 10px;
     }
 
     .footer-para p {
-        font-size: 11px;
+        font-size: 10px;
+
+        line-height: 1.6;
     }
 
     .footer-policy {
-        flex-direction: column;
-        gap: 8px;
-        font-size: 12px;
+        flex-wrap: wrap;
+
+        gap: 8px 15px;
+    }
+
+    .footer-policy a {
+        font-size: 10px;
     }
 
 }
@@ -6122,38 +6664,20 @@ body.light-mode .skills-modal-close {
 
 @media (max-width: 380px) {
 
-    .contact {
-        padding: 20px 15px;
-    }
-
-    .contact-content h1 {
-        font-size: 20px;
-    }
-
-    .contact-content p {
-        font-size: 10px;
-    }
-
-    .contact-info {
-        font-size: 10px;
-    }
-
-    .contact-img img {
-        width: 180px;
-    }
-
     .footer {
         padding: 18px 15px;
     }
 
     .footer-para p {
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .footer-policy {
-        font-size: 11px;
+        gap: 7px 12px;
+    }
+
+    .footer-policy a {
+        font-size: 9px;
     }
 
 }
-
-
