@@ -5848,6 +5848,22 @@ body.light-mode .skills-modal-close {
 }
 
 
+/* Contact methods are actual links, not plain text. */
+.contact-direct-link {
+    color: var(--text-gray);
+    font-size: 13px;
+    line-height: 1.5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color 0.2s ease;
+}
+.contact-direct-link:hover,
+.contact-direct-link:focus-visible {
+    color: var(--secondary-purple);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 /* =========================================
    CONTACT FORM
 ========================================= */
@@ -6681,3 +6697,71 @@ body.light-mode .skills-modal-close {
     }
 
 }
+
+/* Portfolio refresh: skill emphasis, education and project placeholders removed */
+.skills-cards { align-items: stretch; }
+#skills .cards { height: auto; min-height: 280px; }
+#skills .cards-content { padding: 2px 0; }
+#skills .cards-content p { margin: 0; }
+.education-section { padding: 65px max(25px, calc((100vw - 1180px) / 2)); }
+.education-container { width: 100%; }
+.education-heading { display: flex; align-items: flex-start; gap: 17px; margin-bottom: 25px; }
+.education-heading > i { color: var(--primary-purple); font-size: 26px; margin-top: 9px; }
+.education-heading h2 { color: var(--text-white); font-size: 28px; margin: 4px 0 8px; }
+.education-heading p { color: var(--text-gray); font-size: 14px; }
+.education-heading .education-eyebrow { color: var(--secondary-purple); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; }
+.education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.education-card { background: var(--bg-card); color: var(--text-gray); border: 1px solid var(--border-color); border-radius: 14px; padding: 25px; display: flex; gap: 18px; transition: transform .25s, border-color .25s; }
+.education-card:hover { transform: translateY(-4px); border-color: var(--secondary-purple); }
+.education-icon { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(139,92,246,.14); color: var(--secondary-purple); }
+.education-card h3 { color: var(--text-white); font-size: 18px; line-height: 1.4; margin: 5px 0 8px; }
+.education-date { color: var(--secondary-purple); font-weight: 700; font-size: 12px; }
+.education-school { color: var(--text-white); font-size: 14px; margin-bottom: 9px; }
+.education-detail { line-height: 1.6; font-size: 13px; }
+.project-link-note { font-size: 12px; color: var(--text-gray); padding: 12px 0; }
+@media (max-width: 768px) {
+ .education-section { padding: 45px 22px; }
+ .education-grid { grid-template-columns: 1fr; }
+ .education-card { padding: 20px; }
+ .education-heading h2 { font-size: 25px; }
+}
+
+/* Development Journey: project evidence link */
+.timeline-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+  padding: 3px 0;
+  color: var(--secondary-purple);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.timeline-project-link:hover,
+.timeline-project-link:focus-visible {
+  color: var(--primary-purple);
+  text-decoration: underline;
+}
+.timeline-project-link:focus-visible {
+  outline: 2px solid var(--secondary-purple);
+  outline-offset: 3px;
+}
+/* Room for descriptions and timeline's project link without changing the layout */
+.timeline-item { padding-bottom: 18px; }
+.service-card p { max-width: 190px; font-size: 10px; line-height: 1.5; }
+@media (max-width: 600px) {
+  .timeline-project-link { font-size: 10px; }
+  .service-card p { font-size: 11px; }
+}
+
+/* GitHub activity chart fallback if the external graph cannot load */
+.github-chart-fallback {
+  padding: 18px 12px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-gray);
+}
+.github-chart-fallback[hidden] { display: none; }
+.github-chart-fallback a { color: var(--secondary-purple); }

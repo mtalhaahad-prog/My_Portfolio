@@ -221,410 +221,185 @@ document.addEventListener("keydown", function (e) {
    GITHUB STATISTICS
 ========================================= */
 
-/* =========================================
-   GITHUB USERNAME
-========================================= */
-
 const GITHUB_USERNAME = "mtalhaahad-prog";
-
-/* =========================================
-   DOM ELEMENTS
-========================================= */
-
 const githubLoading = document.getElementById("githubLoading");
-
 const githubContent = document.getElementById("githubContent");
-
 const githubError = document.getElementById("githubError");
-
 const githubErrorText = document.getElementById("githubErrorText");
-
 const githubRetry = document.getElementById("githubRetry");
-
-/* Profile */
-
 const githubAvatar = document.getElementById("githubAvatar");
-
 const githubName = document.getElementById("githubName");
-
 const githubUsername = document.getElementById("githubUsername");
-
 const githubBio = document.getElementById("githubBio");
-
-/* Statistics */
-
 const repoCount = document.getElementById("repoCount");
-
 const starCount = document.getElementById("starCount");
-
 const followerCount = document.getElementById("followerCount");
-
 const followingCount = document.getElementById("followingCount");
-
-/* Languages */
-
 const languageBars = document.getElementById("languageBars");
+const githubContributions = document.getElementById("githubContributions");
+const githubChartFallback = document.getElementById("githubChartFallback");
 
-/* =========================================
-   API TIMEOUT
-========================================= */
-
-function fetchWithTimeout(url, options = {}, timeout = 10000) {
-  return Promise.race([
-    fetch(url, options),
-
-
-    new Promise((_, reject) => {
-      setTimeout(() => {
-        reject(new Error("GitHub API request timed out."));
-      }, timeout);
-    }),
-  ]);
+// The contribution chart is provided by a third-party service; if it fails,
+// link to the actual activity page rather than displaying a broken image.
+if (githubContributions) {
+  githubContributions.addEventListener("error", () => {
+    githubContributions.hidden = true;
+    githubContributions.style.display = "none";
+    if (githubChartFallback) githubChartFallback.hidden = false;
+  });
+  githubContributions.addEventListener("load", () => {
+    githubContributions.hidden = false;
+    githubContributions.style.display = "block";
+    if (githubChartFallback) githubChartFallback.hidden = true;
+  });
 }
 
-/* =========================================
-   RESET GITHUB UI
-========================================= */
+// Abort the network request on timeout rather than leaving timers running.
+async function fetchGitHubJSON(url, timeout = 10000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, {
+      headers: { Accept: "application/vnd.github+json" },
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      if (response.status === 403 || response.status === 429) {
+        throw new Error("GitHub's public API is temporarily rate-limited.");
+      }
+      throw new Error(`GitHub API returned ${response.status}.`);
+    }
+    return await response.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 function showGitHubLoading() {
-  if (githubLoading) {
-    githubLoading.style.display = "flex";
+  if (githubLoading) githubLoading.style.display = "flex";
+  if (githubContent) githubContent.style.display = "none";
+  if (githubError) githubError.style.display = "none";
+  for (const item of [repoCount, starCount, followerCount, followingCount]) {
+    if (item) item.textContent = "—";
   }
-
-  if (githubContent) {
-    githubContent.style.display = "none";
-  }
-
-  if (githubError) {
-    githubError.style.display = "none";
-  }
+  if (languageBars) languageBars.textContent = "";
 }
-
-/* =========================================
-   SHOW CONTENT
-========================================= */
 
 function showGitHubContent() {
-  if (githubLoading) {
-    githubLoading.style.display = "none";
-  }
-
-  if (githubError) {
-    githubError.style.display = "none";
-  }
-
-  if (githubContent) {
-    githubContent.style.display = "grid";
-  }
+  if (githubLoading) githubLoading.style.display = "none";
+  if (githubError) githubError.style.display = "none";
+  if (githubContent) githubContent.style.display = "grid";
 }
-
-/* =========================================
-   SHOW ERROR
-========================================= */
 
 function showGitHubError(message) {
-  if (githubLoading) {
-    githubLoading.style.display = "none";
-  }
+  if (githubLoading) githubLoading.style.display = "none";
+  if (githubContent) githubContent.style.display = "none";
+  if (githubErrorText) githubErrorText.textContent = message;
+  if (githubError) githubError.style.display = "flex";
+}
 
-  if (githubContent) {
-    githubContent.style.display = "none";
-  }
+function showLanguageMessage(message) {
+  if (!languageBars) return;
+  languageBars.replaceChildren();
+  const p = document.createElement("p");
+  p.className = "language-empty";
+  p.textContent = message;
+  languageBars.appendChild(p);
+}
 
-  if (githubErrorText) {
-    githubErrorText.textContent =
-      message || "Unable to load GitHub statistics.";
+// Each public, non-fork repository counts once toward its primary language.
+// This avoids 20+ extra API calls per page visit and is labeled accordingly.
+function loadGitHubLanguages(repositories) {
+  if (!languageBars) return;
+  languageBars.replaceChildren();
+  const counts = new Map();
+  for (const repo of repositories) {
+    if (repo.fork || !repo.language) continue;
+    counts.set(repo.language, (counts.get(repo.language) || 0) + 1);
   }
-
-  if (githubError) {
-    githubError.style.display = "flex";
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const total = [...counts.values()].reduce((sum, count) => sum + count, 0);
+  if (!sorted.length || !total) {
+    showLanguageMessage("No language data is available for public repositories.");
+    return;
+  }
+  for (const [language, count] of sorted) {
+    const percentage = ((count / total) * 100).toFixed(1);
+    const item = document.createElement("div");
+    item.className = "language-item";
+    const info = document.createElement("div");
+    info.className = "language-info";
+    const name = document.createElement("span");
+    name.className = "language-name";
+    name.textContent = language;
+    const percent = document.createElement("span");
+    percent.className = "language-percent";
+    percent.textContent = `${percentage}%`;
+    info.append(name, percent);
+    const track = document.createElement("div");
+    track.className = "language-track";
+    const fill = document.createElement("div");
+    fill.className = "language-fill";
+    fill.style.width = `${percentage}%`;
+    track.appendChild(fill);
+    item.append(info, track);
+    languageBars.appendChild(item);
   }
 }
 
-/* =========================================
-   LOAD GITHUB PROFILE
-========================================= */
+// GitHub paginates repositories; get all publicly visible pages when possible
+// so the stars and language counts aren't silently truncated at 100 repos.
+async function loadPublicRepositories(expectedCount) {
+  const repositories = [];
+  for (let page = 1; page <= 10; page++) {
+    const items = await fetchGitHubJSON(
+      `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}/repos?per_page=100&page=${page}&type=public`,
+    );
+    if (!Array.isArray(items)) throw new Error("Unexpected GitHub repository response.");
+    repositories.push(...items);
+    if (items.length < 100 || repositories.length >= expectedCount) return repositories;
+  }
+  throw new Error("Repository list is larger than the supported display limit.");
+}
 
 async function loadGitHubStats() {
   showGitHubLoading();
-
   try {
-    /* =====================================
-           GET USER PROFILE
-        ===================================== */
-
-    const userResponse = await fetchWithTimeout(
-      `https://api.github.com/users/${GITHUB_USERNAME}`,
-
-      {
-        headers: {
-          Accept: "application/vnd.github+json",
-        },
-      },
-
-      10000,
+    const user = await fetchGitHubJSON(
+      `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}`,
     );
+    if (githubAvatar && user.avatar_url) githubAvatar.src = user.avatar_url;
+    if (githubName) githubName.textContent = user.name || "Muhammad Talha Ahad";
+    if (githubUsername) githubUsername.textContent = `@${user.login || GITHUB_USERNAME}`;
+    if (githubBio) githubBio.textContent = user.bio || "Entry-Level Backend Developer";
+    if (repoCount) repoCount.textContent = Number.isFinite(user.public_repos) ? user.public_repos : "—";
+    if (followerCount) followerCount.textContent = Number.isFinite(user.followers) ? user.followers : "—";
+    if (followingCount) followingCount.textContent = Number.isFinite(user.following) ? user.following : "—";
 
-    if (!userResponse.ok) {
-      throw new Error(`GitHub returned ${userResponse.status}`);
+    try {
+      const repos = await loadPublicRepositories(user.public_repos || 0);
+      const stars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+      if (starCount) starCount.textContent = stars;
+      loadGitHubLanguages(repos);
+    } catch (repoError) {
+      // Basic profile numbers are still reliable even when repository details fail.
+      console.warn("GitHub repository details unavailable:", repoError);
+      if (starCount) starCount.textContent = "—";
+      showLanguageMessage("Repository details temporarily unavailable.");
     }
-
-    const user = await userResponse.json();
-
-    /* =====================================
-           PROFILE INFORMATION
-        ===================================== */
-
-    if (githubAvatar) {
-      githubAvatar.src = user.avatar_url;
-    }
-
-    if (githubName) {
-      githubName.textContent = user.name || "Muhammad Talha Ahad";
-    }
-
-    if (githubUsername) {
-      githubUsername.textContent = `@${user.login}`;
-    }
-
-    if (githubBio) {
-      githubBio.textContent = user.bio || "Full Stack Web Developer";
-    }
-
-    /* =====================================
-           BASIC STATISTICS
-        ===================================== */
-
-    if (repoCount) {
-      repoCount.textContent = user.public_repos;
-    }
-
-    if (followerCount) {
-      followerCount.textContent = user.followers;
-    }
-
-    if (followingCount) {
-      followingCount.textContent = user.following;
-    }
-
-    /* =====================================
-           GET REPOSITORIES
-        ===================================== */
-
-    const repoResponse = await fetchWithTimeout(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
-
-      {
-        headers: {
-          Accept: "application/vnd.github+json",
-        },
-      },
-
-      10000,
-    );
-
-    let repositories = [];
-
-    if (repoResponse.ok) {
-      repositories = await repoResponse.json();
-    }
-
-    /* =====================================
-           CALCULATE TOTAL STARS
-        ===================================== */
-
-    let totalStars = 0;
-
-    repositories.forEach((repo) => {
-      totalStars += repo.stargazers_count || 0;
-    });
-
-    if (starCount) {
-      starCount.textContent = totalStars;
-    }
-
-    /* =====================================
-           CALCULATE LANGUAGES
-        ===================================== */
-
-    await loadGitHubLanguages(repositories);
-
-    /* =====================================
-           SHOW CONTENT
-        ===================================== */
-
     showGitHubContent();
   } catch (error) {
-    console.error("GitHub Statistics Error:", error);
-
-    showGitHubError("Unable to load GitHub statistics. Please try again.");
+    console.warn("GitHub profile unavailable:", error);
+    showGitHubError("Live GitHub statistics are temporarily unavailable. Please try again or view my GitHub profile.");
   }
 }
 
-/* =========================================
-   LOAD MOST USED LANGUAGES
-========================================= */
-
-async function loadGitHubLanguages(repositories) {
-  if (!languageBars) {
-    return;
-  }
-
-  /* Clear old languages */
-
-  languageBars.innerHTML = "";
-
-  if (!repositories || repositories.length === 0) {
-    languageBars.innerHTML = `
-            <p class="language-empty">
-                No public repositories found.
-            </p>
-        `;
-
-    return;
-  }
-
-  /* =====================================
-       LANGUAGE TOTALS
-    ===================================== */
-
-  const languageTotals = {};
-
-  /*
-       Get languages from repositories.
-       We only process repositories that
-       actually contain programming languages.
-    */
-
-  const languageRequests = repositories
-    .filter((repo) => !repo.fork)
-    .slice(0, 20)
-    .map(async (repo) => {
-      try {
-        const response = await fetchWithTimeout(
-          repo.languages_url,
-
-          {
-            headers: {
-              Accept: "application/vnd.github+json",
-            },
-          },
-
-          7000,
-        );
-
-        if (!response.ok) {
-          return {};
-        }
-
-        return await response.json();
-      } catch (error) {
-        console.warn(`Could not load languages for ${repo.name}`, error);
-
-        return {};
-      }
-    });
-
-  const languageResults = await Promise.all(languageRequests);
-
-  /* =====================================
-       ADD LANGUAGE BYTES
-    ===================================== */
-
-  languageResults.forEach((languages) => {
-    Object.entries(languages).forEach(([language, bytes]) => {
-      if (!languageTotals[language]) {
-        languageTotals[language] = 0;
-      }
-
-      languageTotals[language] += bytes;
-    });
-  });
-
-  /* =====================================
-       SORT LANGUAGES
-    ===================================== */
-
-  const sortedLanguages = Object.entries(languageTotals)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
-
-  if (sortedLanguages.length === 0) {
-    languageBars.innerHTML = `
-            <p class="language-empty">
-                No language data available.
-            </p>
-        `;
-
-    return;
-  }
-
-  /* =====================================
-       TOTAL BYTES
-    ===================================== */
-
-  const totalBytes = sortedLanguages.reduce(
-    (total, [, bytes]) => total + bytes,
-    0,
-  );
-
-  /* =====================================
-       CREATE LANGUAGE BARS
-    ===================================== */
-
-  sortedLanguages.forEach(([language, bytes]) => {
-    const percentage = ((bytes / totalBytes) * 100).toFixed(1);
-
-    const item = document.createElement("div");
-
-    item.className = "language-item";
-
-    item.innerHTML = `
-
-                <div class="language-info">
-
-                    <span class="language-name">
-                        ${language}
-                    </span>
-
-                    <span class="language-percent">
-                        ${percentage}%
-                    </span>
-
-                </div>
-
-                <div class="language-track">
-
-                    <div
-                        class="language-fill"
-                        style="width: ${percentage}%"
-                    ></div>
-
-                </div>
-
-            `;
-
-    languageBars.appendChild(item);
-  });
-}
-
-/* =========================================
-   RETRY
-========================================= */
-
-if (githubRetry) {
-  githubRetry.addEventListener("click", function () {
-    loadGitHubStats();
-  });
-}
-
-/* =========================================
-   INITIAL LOAD
-========================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
+if (githubRetry) githubRetry.addEventListener("click", loadGitHubStats);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", loadGitHubStats);
+} else {
   loadGitHubStats();
-});
+}
 
 emailjs.init({
   publicKey: "MWbuGWAsO4FpS5NDg",
